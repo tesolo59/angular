@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
+//import { NgxVcardModule } from "ngx-vcard";
+import { Contacts } from "@ionic-enterprise/contacts/ngx";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule], //NgxVcardModule
+  declarations: [AppComponent],
+  providers: [Contacts],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

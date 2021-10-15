@@ -1,32 +1,133 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Contacts } from "@ionic-enterprise/contacts/ngx";
+import { Contact, ContactName, ContactField } from "@ionic-enterprise/contacts";
+
+//import { VCard, VCardEncoding } from "ngx-vcard";
+//import ContactsX from "cordova-plugin-contacts-x";
+// import {
+//   Contacts,
+//   ContactField,
+//   ContactName,
+// } from "@ionic-native/contacts";
 
 @Component({
-  selector: 'app-root',
-  template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <span style="display: block">{{ title }} app is running!</span>
-      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-    </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    
-  `,
-  styles: []
+  selector: "my-app",
+  templateUrl: "./app.component.html",
 })
-export class AppComponent {
-  title = 'Test';
+export class AppComponent implements OnInit {
+  //name = "VCard Test";
+  //public vCardEncoding: typeof VCardEncoding = VCardEncoding;
+
+  constructor(private contacts: Contacts) {}
+
+  // public vCard: VCard;
+  ngOnInit(): void {
+    console.log("Initialized server...");
+    //this.vCard = this.createContactCard();
+  }
+
+  // public createContactCard(): VCard {
+  //   let vCard: VCard = {
+  //     version: "2.1",
+  //     name: { firstNames: "John", lastNames: "Smith" },
+  //     organization: " MyDealership",
+  //     telephone: [{ value: "5551114444", param: { type: "work" } }],
+  //     email: [{ value: "mydealership@email.com", param: { type: "work" } }],
+  //     address: [
+  //       {
+  //         value: { street: "124 St" },
+  //         locality: "New York",
+  //         postalCode: "10019",
+  //         countryName: "US",
+  //       },
+  //     ],
+  //   };
+  //   return vCard;
+  // }
+
+  // private askForPermissions() {
+  //   ContactsX.hasPermission(
+  //     (result) => {
+  //       if (result && result.write) {
+  //         console.log("Have Contacts write permissions");
+  //         return;
+  //       }
+  //     },
+  //     (error) => {
+  //       console.log("Error checking Contact permissions: " + error);
+  //     }
+  //   );
+  //   ContactsX.requestPermission(
+  //     (result) => {},
+  //     (error) => {
+  //       console.log("Error receiving Contact permissions " + error);
+  //     }
+  //   );
+  //   //ContactsX.requestWritePermission(
+  //   //  (result) => {},
+  //   //  (error) => {
+  //   //    console.log("Error receiving Contact write permissions " + error);
+  //   //  }
+  //   // );
+  // }
+
+  // public oldCreateContact() {
+  //   let contact = this.contacts.create();
+  //   contact.name = new ContactName("Blah", "Bob", "Ridiculous");
+  //   contact.phoneNumbers = [new ContactField("mobile", "5551112222")];
+  //   contact.save().then(
+  //     () => alert("Saved new contact"),
+  //     (error) => console.log("Error saving: " + error)
+  //   );
+  // }
+
+  // public createContact() {
+  //   this.askForPermissions();
+
+  //   ContactsX.save(
+  //     {
+  //       firstName: "Drive",
+  //       familyName: "Test",
+  //       displayName: "My Dealership",
+  //       phoneNumbers: [
+  //         {
+  //           type: "work",
+  //           value: "5551112222",
+  //         },
+  //       ],
+  //       emails: [
+  //         {
+  //           type: "work",
+  //           value: "dealer@email.com",
+  //         },
+  //       ],
+  //     },
+  //     function (success) {
+  //       console.log("saved! " + success);
+  //     },
+  //     function (error) {
+  //       console.error("failed to save " + error);
+  //     }
+  //   );
+  // }
+
+  // public oldCreateContact() {
+  //   let contact = this.contacts.create();
+  //   contact.name = new ContactName("Fun", "Bob", "Ridiculous");
+  //   contact.phoneNumbers = [new ContactField("mobile", "5551112222")];
+  //   contact.save().then(
+  //     () => alert("Saved new contact"),
+  //     (error) => console.log("Error saving: " + error)
+  //   );
+  // }
+
+  public newCreateContact() {
+    let contact = this.contacts.create();
+    contact.name = new ContactName("New", "Amazing", "Yay");
+    contact.phoneNumbers = [new ContactField("mobile", "7775552121")];
+    contact.save().then(
+      () => alert("Saved new contact"),
+      (error) => console.log("Error saving: " + error)
+    );
+  }
 }
